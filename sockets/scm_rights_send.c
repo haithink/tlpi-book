@@ -17,7 +17,7 @@ main(int argc, char *argv[])
 {
     int data, sfd, opt, fd;
     ssize_t ns;
-    bool useDatagramSocket;
+    Boolean  useDatagramSocket;
     struct msghdr msgh;
     struct iovec iov;
 
@@ -38,12 +38,12 @@ main(int argc, char *argv[])
 
     /* Parse command-line options */
 
-    useDatagramSocket = false;
+    useDatagramSocket = FALSE;
 
     while ((opt = getopt(argc, argv, "d")) != -1) {
         switch (opt) {
         case 'd':
-            useDatagramSocket = true;
+            useDatagramSocket = TRUE;
             break;
 
         default:

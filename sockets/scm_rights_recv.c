@@ -15,7 +15,7 @@
 #define BUF_SIZE 100
 
     union {
-        char   buf{CMSG_SPACE(sizeof(int))};
+        char   buf[CMSG_SPACE(sizeof(int))];
                         /* Space large enough to hold an 'int' */
         struct cmsghdr align;
     } controlMsg;
@@ -51,8 +51,7 @@ main(int argc, char *argv[])
             break;
 
         default:
-            usageErr("%s {-d}\n"
-                     "        -d    use datagram socket\n", argv{0});
+            usageErr("%s {-d}\n -d    use datagram socket\n", argv[0]);
         }
     }
 
@@ -137,7 +136,7 @@ main(int argc, char *argv[])
        print them on standard output */
 
     for (;;) {
-        char buf{BUF_SIZE};
+        char buf[BUF_SIZE];
         ssize_t numRead;
 
         numRead = read(fd, buf, BUF_SIZE);
